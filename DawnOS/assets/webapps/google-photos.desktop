@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Google Photos
+Exec=google-chrome-stable --app=https://photos.google.com
+Icon=google-photos
+Type=Application

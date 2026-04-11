@@ -1,0 +1,112 @@
+/*
+ * Professional Rofi Wallpicker Theme
+ */
+
+configuration {
+    show-icons:                     true;
+    drun-display-format:            "{name}";
+    disable-history:                true;
+    hover-select:                   true;
+}
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+    border:                         2px;
+    border-color:                   @selected-active-background;
+    border-radius:                  12px;
+    width:                          750px;
+    height:                         520px;
+    location:                       center;
+    x-offset:                       0;
+    y-offset:                       0;
+}
+
+prompt {
+    enabled:                        true;
+    padding:                        10px 15px 10px 15px;
+    background-color:               transparent;
+    text-color:                     @foreground;
+    font:                           "JetBrainsMono Nerd Font Bold 12";
+}
+
+entry {
+    background-color:               transparent;
+    text-color:                     @foreground;
+    placeholder-color:              @foreground;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search Wallpapers...";
+    padding:                        10px 15px 10px 15px;
+    font:                           "JetBrainsMono Nerd Font 12";
+    blink:                          true;
+}
+
+inputbar {
+    children:                       [ prompt, entry ];
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    expand:                         false;
+    border:                         0px 0px 2px 0px;
+    border-radius:                  0px;
+    border-color:                   @selected-active-background;
+    margin:                         0px;
+    padding:                        10px;
+}
+
+listview {
+    background-color:               transparent;
+    padding:                        15px;
+    columns:                        4;
+    lines:                          3;
+    spacing:                        15px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+    border:                         0px;
+}
+
+mainbox {
+    background-color:               transparent;
+    children:                       [ inputbar, listview ];
+    spacing:                        0px;
+    padding:                        0px;
+}
+
+element {
+    background-color:               transparent;
+    text-color:                     @foreground;
+    orientation:                    vertical;
+    border-radius:                  10px;
+    padding:                        10px;
+    cursor:                         pointer;
+}
+
+element-icon {
+    background-color:               transparent;
+    size:                           130px;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    cursor:                         inherit;
+}
+
+element-text {
+    background-color:               transparent;
+    text-color:                     inherit;
+    font:                           "JetBrainsMono Nerd Font 9";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         10px 0px 0px 0px;
+    cursor:                         inherit;
+}
+
+element selected {
+    background-color:               @selected-normal-background;
+    text-color:                     @selected-normal-foreground;
+    border:                         2px;
+    border-color:                   @selected-active-background;
+}

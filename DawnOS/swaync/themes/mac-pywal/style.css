@@ -1,0 +1,266 @@
+/* macOS-style SwayNC with Pywal Integration */
+
+@define-color cc-bg alpha(@background, 0.85);
+@define-color notif-bg alpha(@background, 0.85);
+@define-color widget-bg alpha(@color8, 0.2);
+@define-color widget-hover alpha(@color1, 0.6);
+@define-color widget-active alpha(@color2, 0.8);
+
+* {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Base Window Styling */
+.control-center .notification-row:focus,
+.control-center .notification-row:hover {
+  opacity: 1;
+}
+
+.notification-row {
+  outline: none;
+  margin: 10px;
+  padding: 0;
+}
+
+.notification {
+  border-radius: 16px;
+  background: @notif-bg;
+  border: 1px solid alpha(@color1, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 12px;
+  margin: 0;
+}
+
+.notification-content {
+  background: transparent;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.close-button {
+  background: @color1;
+  color: @background;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-right: 5px;
+  box-shadow: none;
+  border: none;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.close-button:hover {
+  box-shadow: none;
+  background: @color9;
+  transition: all 0.15s ease-in-out;
+  border: none;
+}
+
+.notification-default-action,
+.notification-action {
+  padding: 4px;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+  border: 1px solid alpha(@color1, 0.5);
+  color: @foreground;
+  transition: all 0.15s ease-in-out;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  -gtk-icon-effect: none;
+  background: @widget-hover;
+}
+
+.summary {
+  font-size: 16px;
+  font-weight: bold;
+  background: transparent;
+  color: @foreground;
+  text-shadow: none;
+}
+
+.time {
+  font-size: 14px;
+  font-weight: bold;
+  background: transparent;
+  color: @color7;
+  text-shadow: none;
+  margin-right: 18px;
+}
+
+.body {
+  font-size: 14px;
+  font-weight: normal;
+  background: transparent;
+  color: @color15;
+  text-shadow: none;
+}
+
+/* Control Center */
+.control-center {
+  background: @cc-bg;
+  color: @foreground;
+  border-radius: 16px;
+  border: 1px solid alpha(@color1, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.control-center-list-placeholder {
+  opacity: 0.5;
+}
+
+.control-center-list-placeholder-title {
+  color: @foreground;
+}
+
+.control-center-list-placeholder-subtitle {
+  color: @color7;
+}
+
+/* Widgets Base */
+.widget-title {
+  margin: 8px;
+  color: @foreground;
+}
+
+.widget-title > button {
+  font-size: 1rem;
+  color: @foreground;
+  text-shadow: none;
+  background: @widget-bg;
+  border: 1px solid alpha(@color1, 0.5);
+  box-shadow: none;
+  border-radius: 12px;
+}
+
+.widget-title > button:hover {
+  background: @widget-hover;
+}
+
+.widget-dnd {
+  margin: 8px;
+  font-size: 1.1rem;
+  color: @foreground;
+}
+
+.widget-dnd > switch {
+  font-size: initial;
+  border-radius: 12px;
+  background: @widget-bg;
+  border: 1px solid alpha(@color1, 0.5);
+  box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+  background: @color2;
+}
+
+.widget-dnd > switch slider {
+  background: @background;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* MPRIS Widget */
+.widget-mpris {
+  color: @foreground;
+  padding: 4px 8px;
+  margin: 4px 8px;
+  border-radius: 16px;
+  background: @widget-bg;
+  border: 1px solid alpha(@color1, 0.5);
+}
+
+.widget-mpris-player {
+  padding: 8px;
+  margin: 0;
+}
+
+.widget-mpris-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: @foreground;
+}
+
+.widget-mpris-subtitle {
+  font-size: 0.9rem;
+  color: @color7;
+}
+
+.widget-mpris-album-art {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Buttons Grid */
+.widget-buttons-grid {
+  padding: 4px 8px;
+  margin: 4px 8px;
+  border-radius: 16px;
+  background: @widget-bg;
+  border: 1px solid alpha(@color1, 0.5);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: alpha(@background, 0.5);
+  border-radius: 12px;
+  color: @foreground;
+  font-size: 1.1rem;
+  min-width: 48px;
+  min-height: 48px;
+  margin: 4px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @widget-hover;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.active {
+  background: @widget-active;
+  color: @background;
+}
+
+/* Volume/Backlight Sliders */
+.widget-volume,
+.widget-backlight {
+  background: @widget-bg;
+  padding: 4px 8px;
+  margin: 4px 8px;
+  border-radius: 16px;
+  border: 1px solid alpha(@color1, 0.5);
+}
+
+.widget-volume > box > button {
+  background: transparent;
+  color: @foreground;
+  border: none;
+  box-shadow: none;
+}
+
+scale trough {
+  border-radius: 12px;
+  background: alpha(@background, 0.6);
+  border: none;
+  min-height: 12px;
+}
+
+scale highlight {
+  border-radius: 12px;
+  background: @color2;
+}
+
+scale slider {
+  background: @foreground;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}

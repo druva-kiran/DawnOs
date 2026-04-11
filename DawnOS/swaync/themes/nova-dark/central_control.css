@@ -1,0 +1,332 @@
+/* =====================================================
+   central_control.css — Control Center
+   Part of: nova-dark swaync theme
+   Colors: driven by pywal (@color0–@color15)
+   ===================================================== */
+
+/* ── Color aliases from pywal ────────────────────── */
+@define-color cc-bg          alpha(@background, 0.88);
+@define-color cc-bg-alt      alpha(@color0, 0.55);
+@define-color cc-bg-deep     alpha(@color0, 0.75);
+@define-color cc-border      alpha(@color4, 0.22);
+@define-color cc-accent      @color4;
+@define-color cc-accent2     @color6;
+@define-color cc-hover       alpha(@color4, 0.18);
+@define-color cc-active      alpha(@color4, 0.38);
+@define-color cc-text        @foreground;
+@define-color cc-text-dim    alpha(@foreground, 0.55);
+@define-color cc-urgent      @color1;
+@define-color cc-shadow      rgba(0, 0, 0, 0.6);
+
+/* ── Global reset ────────────────────────────────── */
+* {
+  all: unset;
+  color: @cc-text;
+  font-size: 13px;
+  font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font", "Rubik", sans-serif;
+  transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blank-window {
+  background: transparent;
+}
+
+/* ── Control Center shell ────────────────────────── */
+.control-center {
+  background: @cc-bg;
+  border-radius: 20px;
+  border: 1px solid @cc-border;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.12),
+    0 12px 40px @cc-shadow;
+  margin: 0;
+  padding: 12px 10px;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.control-center-list-placeholder {
+  color: @cc-text-dim;
+  font-size: 0.85rem;
+  opacity: 0.5;
+}
+
+/* ── Notifications inside CC ─────────────────────── */
+.control-center .notification-row {
+  margin: 3px 0;
+}
+
+.control-center .notification-row .notification-background {
+  background: @cc-bg-alt;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  padding: 2px;
+}
+
+.control-center .notification-row .notification-background:hover {
+  border-color: @cc-border;
+}
+
+.control-center .notification-row .notification-background .notification.critical {
+  border: 1px solid alpha(@cc-urgent, 0.6);
+  border-radius: 13px;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content {
+  margin: 6px;
+  padding: 6px 4px 4px 2px;
+}
+
+.control-center .notification-row .notification-background .notification > *:last-child > * {
+  min-height: 2.8em;
+}
+
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
+  background: alpha(@cc-accent, 0.2);
+  border-radius: 9px;
+  margin: 3px;
+  padding: 4px 10px;
+}
+
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+  background: alpha(@cc-accent, 0.4);
+}
+
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+  background: @cc-accent;
+  color: @background;
+}
+
+.control-center .notification-row .notification-background .close-button {
+  background: transparent;
+  border-radius: 7px;
+  padding: 4px;
+  margin: 3px;
+  color: @cc-text-dim;
+}
+
+.control-center .notification-row .notification-background .close-button:hover {
+  background: alpha(@cc-urgent, 0.3);
+  color: @cc-text;
+}
+
+/* ── Progress bars ───────────────────────────────── */
+progressbar,
+progress,
+trough {
+  border-radius: 99px;
+}
+
+progressbar {
+  background: rgba(255,255,255,0.07);
+  min-height: 4px;
+}
+
+progress {
+  background: @cc-accent;
+  min-height: 4px;
+}
+
+/* ── Notification groups ─────────────────────────── */
+.notification-group {
+  margin: 3px 6px;
+}
+
+.notification-group-headers {
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: @cc-text-dim;
+}
+
+.notification-group-icon {
+  color: @cc-accent;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: transparent;
+  border-radius: 7px;
+  padding: 3px 6px;
+  margin: 2px;
+  color: @cc-text-dim;
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+  background: @cc-hover;
+  color: @cc-text;
+}
+
+/* ── Widget: title ───────────────────────────────── */
+.widget-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: @cc-text-dim;
+  margin: 2px 8px 6px 8px;
+}
+
+.widget-title > label {
+  color: @cc-text-dim;
+}
+
+.widget-title button {
+  background: @cc-bg-alt;
+  border-radius: 9px;
+  padding: 4px 14px;
+  font-family: "Symbols Nerd Font Mono";
+  font-size: 1rem;
+  color: @cc-text;
+  border: 1px solid @cc-border;
+}
+
+.widget-title button:hover {
+  background: @cc-hover;
+  border-color: alpha(@cc-accent, 0.35);
+}
+
+.widget-title button:active {
+  background: @cc-active;
+}
+
+/* ── Widget: DND ─────────────────────────────────── */
+.widget-dnd {
+  margin: 2px 8px 6px 8px;
+  font-size: 0.9rem;
+}
+
+.widget-dnd > switch {
+  background: @cc-bg-alt;
+  border-radius: 99px;
+  padding: 2px;
+  box-shadow: none;
+  border: 1px solid @cc-border;
+  min-width: 42px;
+  min-height: 22px;
+}
+
+.widget-dnd > switch:hover {
+  background: @cc-hover;
+}
+
+.widget-dnd > switch:checked {
+  background: @cc-accent;
+  border-color: transparent;
+}
+
+.widget-dnd > switch slider {
+  background: @cc-text;
+  border-radius: 99px;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+/* ── Widget: buttons-grid ────────────────────────── */
+.widget-buttons-grid {
+  font-family: "Symbols Nerd Font Mono";
+  font-size: 1.25rem;
+  padding: 6px 4px;
+  margin: 2px 6px 6px 6px;
+  border-radius: 14px;
+  background: @cc-bg-alt;
+  border: 1px solid @cc-border;
+}
+
+.widget-buttons-grid > flowbox {
+  background: transparent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild {
+  background: transparent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: transparent;
+  border-radius: 10px;
+  margin: 4px 6px;
+  padding: 8px 16px;
+  color: @cc-text-dim;
+  border: 1px solid transparent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @cc-hover;
+  color: @cc-text;
+  border-color: @cc-border;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:active {
+  background: @cc-active;
+  color: @cc-accent;
+}
+
+/* ── Widget: mpris ───────────────────────────────── */
+.widget-mpris {
+  background: @cc-bg-alt;
+  border-radius: 16px;
+  border: 1px solid @cc-border;
+  margin: 2px 6px 6px 6px;
+  padding: 2px;
+}
+
+.widget-mpris-player {
+  background: transparent;
+  border-radius: 14px;
+  padding: 8px 12px;
+  margin: 2px;
+}
+
+.widget-mpris > box > button {
+  border-radius: 99px;
+  padding: 4px;
+  color: @cc-text-dim;
+}
+
+.widget-mpris button {
+  color: alpha(@cc-text, 0.5);
+  border-radius: 99px;
+  padding: 4px 8px;
+}
+
+.widget-mpris button:hover {
+  color: @cc-text;
+  background: @cc-hover;
+}
+
+.widget-mpris-album-art {
+  border-radius: 10px;
+}
+
+.widget-mpris-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.widget-mpris-subtitle {
+  font-size: 0.76rem;
+  color: @cc-text-dim;
+}
+
+picture.mpris-background {
+  opacity: 0;
+}
+
+/* ── Scrollbar ───────────────────────────────────── */
+scrollbar {
+  background: transparent;
+  border-radius: 99px;
+  min-width: 4px;
+}
+
+scrollbar slider {
+  background: alpha(@cc-text, 0.15);
+  border-radius: 99px;
+  min-width: 4px;
+}
+
+scrollbar slider:hover {
+  background: alpha(@cc-accent, 0.4);
+}

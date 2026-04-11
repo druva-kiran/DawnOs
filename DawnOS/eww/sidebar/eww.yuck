@@ -1,0 +1,108 @@
+(defpoll current_volume :interval "1s" "scripts/volume.sh")
+(defpoll current_brightness :interval "1s" "scripts/brightness.sh")
+
+(defpoll cur_bat :interval "30s" "cat /sys/class/power_supply/BAT*/capacity | head -1")
+(defpoll cur_temp :interval "5s" "cat /sys/class/thermal/thermal_zone0/temp | awk '{print int($1/1000)}'")
+
+(defpoll current_day :interval "1h" "date '+%d'")
+(defpoll current_month :interval "1h" "date '+%m'")
+(defpoll current_year :interval "1h" "date '+%Y'")
+(deflisten media_info :initial "{}" "scripts/media.sh")
+
+;; QUICK SETTINGS WIDGET
+(defwidget quick_settings []
+  (box :class "widget-card quick-settings" :orientation "v" :spacing 15 :space-evenly false
+    ;; Volume Slider
+    (box :class "control-row" :orientation "h" :space-evenly false :spacing 12
+      (box :class "control-icon-box volume-icon" :valign "center" :halign "center"
+        (label :class "control-icon" :text "󰕾")
+      )
+      (scale :min 0 :max 101 :value current_volume :hexpand true
+             :onchange "scripts/volume.sh set {}")
+    )
+    ;; Brightness Slider
+    (box :class "control-row" :orientation "h" :space-evenly false :spacing 12
+      (box :class "control-icon-box brightness-icon" :valign "center" :halign "center"
+        (label :class "control-icon" :text "󰃠")
+      )
+      (scale :min 0 :max 101 :value current_brightness :hexpand true
+             :onchange "scripts/brightness.sh set {}")
+    )
+    ;; Toggles Grid (2x2)
+    (box :class "toggles-box" :orientation "v" :space-evenly true :spacing 10
+      (box :orientation "h" :space-evenly true :spacing 10
+        (button :class "toggle-btn" :onclick "scripts/toggles.sh wifi" "󰖩")
+        (button :class "toggle-btn" :onclick "scripts/toggles.sh bluetooth" "󰂯")
+      )
+      (box :orientation "h" :space-evenly true :spacing 10
+        (button :class "toggle-btn" :onclick "scripts/toggles.sh nightlight" "󰈈")
+        (button :class "toggle-btn" :onclick "scripts/toggles.sh screenshot" "󰄀")
+      )
+    )
+  )
+)
+
+;; METRIC BAR HELPER (Vertical)
+(defwidget vertical_metric [label value temp class]
+  (box :class "vertical-metric" :orientation "v" :space-evenly false :spacing 6 :halign "center"
+    (label :class "metric-label ${class}-label" :text label)
+    (label :class "metric-val" :text "${value}${temp == true ? '°' : '%'}")
+    (box :class "metric-prog-box" :orientation "v" :vexpand true :halign "center"
+      (progress :class "metric-prog ${class}" :value value :orientation "v" :flipped true)
+    )
+  )
+)
+
+;; SYSTEM METRICS WIDGET
+(defwidget system_metrics []
+  (box :class "widget-card system-metrics" :orientation "h" :space-evenly true :spacing 12
+    (vertical_metric :label "CPU" :value {round(EWW_CPU.avg, 0)} :temp false :class "cpu")
+    (vertical_metric :label "TMP" :value {cur_temp != "" ? cur_temp : 0} :temp true :class "tmp")
+    (vertical_metric :label "MEM" :value {round(EWW_RAM.used_mem_perc, 0)} :temp false :class "mem")
+    (vertical_metric :label "DSK" :value {round(EWW_DISK['/'].used_perc, 0)} :temp false :class "dsk")
+    (vertical_metric :label "BAT" :value {cur_bat != "" ? cur_bat : 0} :temp false :class "bat")
+  )
+)
+
+;; MEDIA PLAYER WIDGET
+(defwidget media_player []
+  (box :class "widget-card media-player" :orientation "h" :space-evenly false :spacing 15
+    ;; Album Art
+    (box :class "album-art" :style {media_info.artUrl != "" ? "background-image: url('${media_info.artUrl}');" : "background-color: rgba(255,255,255,0.1);"})
+    ;; Info and Controls
+    (box :class "media-info" :orientation "v" :space-evenly false :spacing 4 :valign "center" :hexpand true
+      (label :class "media-title" :text "${media_info.title == '' ? 'Not playing' : media_info.title}" :limit-width 16 :halign "start")
+      (label :class "media-artist" :text "${media_info.artist == '' ? 'No artist' : media_info.artist}" :limit-width 18 :halign "start")
+      (box :class "media-controls" :orientation "h" :space-evenly false :spacing 12 :halign "start"
+        (button :class "media-btn" :onclick "playerctl previous" "󰒮")
+        (button :class "media-btn play-btn" :onclick "playerctl play-pause" "${media_info.status == 'Playing' ? '󰏤' : '󰐊'}")
+        (button :class "media-btn" :onclick "playerctl next" "󰒭")
+      )
+    )
+  )
+)
+
+;; CALENDAR WIDGET
+(defwidget calendar_widget []
+  (box :class "widget-card calendar-box"
+    (calendar :class "calendar" 
+              :day current_day 
+              :month current_month 
+              :year current_year)
+  )
+)
+
+;; MAIN SIDEBAR WINDOW
+(defwindow sidebar
+  :monitor 0
+  :geometry (geometry :x "20px" :y "0px" :width "200px" :height "450px" :anchor "center right")
+  :stacking "bg"
+  :exclusive false
+  :focusable false
+  (box :class "main-container" :orientation "v" :spacing 15 :space-evenly false
+    (quick_settings)
+    (system_metrics)
+    (media_player)
+    (calendar_widget)
+  )
+)

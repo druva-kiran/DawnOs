@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Instagram
+Exec=google-chrome-stable --app=https://www.instagram.com
+Icon=instagram
+Type=Application

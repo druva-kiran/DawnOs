@@ -1,0 +1,125 @@
+{
+    "layer": "top",
+    "modules-center": [
+        "custom/fastfetch",
+        "clock",
+        "hyprland/workspaces",
+        "pulseaudio",
+        "bluetooth",
+        "network",
+        "custom/btop",
+        "battery"
+    ],
+    "spacing": 18,
+    "margin-top": 5,
+    "margin-bottom": 3,
+    "clock": {
+        "interval": 60,
+        "format": "{:%I:%M %p}",
+        "max-length": 25,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#c2c4c6'><b>{}</b></span>",
+                "days": "<span color='#c2c4c6'><b>{}</b></span>",
+                "weeks": "<span color='#7F7F7E'><b>W{}</b></span>",
+                "weekdays": "<span color='#6C726D'><b>{}</b></span>",
+                "today": "<span color='#5E6461'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "eDP-1": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ] // Replace DP-1 with your monitor name
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-bluetooth": "{icon}󰂯",
+        "format-muted": "󰖁",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "pkill -x wiremix || kitty --class floating_wiremix -e wiremix -v output",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
+    },
+    "network": {
+        "interval": 5,
+        "interface": "wlan0", // Use 'ip link' to find your interface
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "max-length": 50,
+        "on-click": "pkill -x impala || kitty --class floating_impala -e impala"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}",
+        "format-charging": "{capacity} ",
+        "format-plugged": "{capacity} ",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "max-length": 25,
+        "on-click": "swaync-client -t -sw"
+    },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-connected": "󰂱",
+        "tooltip-format": "Bluetooth: {status}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "pkill -x bluetui || kitty --class floating_bluetui -e bluetui" // Opens the bluetooth manager when clicked
+    },
+    "custom/fastfetch": {
+        "format": "󰣇",
+        "on-click": "~/.config/waybar/scripts/toggle_fastfetch.sh",
+        "tooltip": false
+    },
+    "custom/btop": {
+        "format": "",
+        "on-click": "pkill -x btop || kitty --class floating_btop -e btop",
+        "tooltip": false
+    }
+}

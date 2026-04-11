@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=WhatsApp
+Exec=google-chrome-stable  --app=https://web.whatsapp.com
+Icon=whatsapp
+Type=Application
+Categories=Network;
+StartupWMClass=whatsapp

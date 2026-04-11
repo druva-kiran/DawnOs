@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Gmail
+Comment=Google Mail Service
+Exec=google-chrome-stable --app=https://mail.google.com/mail/u/0/#inbox --ozone-platform-hint=auto --enable-features=TouchpadOverscrollHistoryNavigation
+Icon=gmail
+Terminal=false
+Type=Application
+Categories=Network;Email;
+StartupWMClass=mail.google.com

@@ -1,0 +1,89 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "cssPriority": "user",
+
+  "control-center-width": 400,
+  "control-center-height": 0,
+  "control-center-margin-top": 12,
+  "control-center-margin-bottom": 12,
+  "control-center-margin-right": 12,
+  "control-center-margin-left": 0,
+
+  "notification-window-width": 400,
+  "notification-body-image-height": 120,
+  "notification-body-image-width": 200,
+
+  "timeout": 5,
+  "timeout-low": 3,
+  "timeout-critical": 0,
+
+  "fit-to-screen": false,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 250,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "script-fail-notify": true,
+
+  "notification-visibility": {
+    "spotify-low": {
+      "state": "muted",
+      "urgency": "Low",
+      "app-name": "Spotify"
+    }
+  },
+
+  "widgets": [
+    "title",
+    "dnd",
+    "mpris",
+    "volume",
+    "backlight",
+    "buttons-grid",
+    "notifications"
+  ],
+
+  "widget-config": {
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "󰎟 Clear"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "volume": {
+      "label": "󰕾"
+    },
+    "backlight": {
+      "label": "󰃠",
+      "device": "amdgpu_bl2"
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰤨",
+          "type": "normal",
+          "command": "sh -c '/usr/bin/kitty -e /usr/bin/impala'"
+        },
+        {
+          "label": "󰂯",
+          "type": "normal",
+          "command": "sh -c '/usr/bin/kitty -e /usr/bin/bluetui'"
+        },
+        {
+          "label": "󰕾",
+          "type": "normal",
+          "command": "sh -c '/usr/bin/kitty -e /usr/bin/wiremix'"
+        },
+        {
+          "label": "󰏘",
+          "type": "normal",
+          "command": "/usr/bin/nwg-look"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Google Messages
+Exec=google-chrome-stable --app=https://messages.google.com/web
+Icon=android-messages
+Type=Application

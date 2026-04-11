@@ -1,0 +1,95 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+* {
+    all: unset;
+    font-family: "Google Sans Flex" ,"JetBrainsMono Nerd Font Propo";
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* The Main Bar Container */
+.modules-center {
+    background-color: @background;
+    padding: 2px 18px;
+    border-radius: 99px;
+}
+
+#clock {
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Workspaces Module */
+#workspaces {
+    background-color: @color0;
+    padding: 2px 4px;
+    margin: 3px 0;
+    border-radius: 99px;
+}
+
+#workspaces button {
+    background-color: @color8;
+    color: @foreground;
+    padding: 0 5px;
+    margin: 0 2px;
+    border-radius: 99px;
+    min-width: 10px;
+    transition: all 300ms ease-in-out;
+}
+
+#workspaces button.active {
+    background-color: @color2;
+    color: @background;
+    min-width: 1.5rem;
+    transition: none;
+}
+
+#workspaces button.empty {
+    color: @color7;
+}
+
+/* Battery Module with Dynamic Colors */
+#battery {
+    background-color: @color2;
+    /* Maps to Pywal's standard Green */
+    color: @background;
+    margin: 6px 0;
+    padding: 0 8px;
+    border-radius: 99px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+#battery.warning {
+    background-color: rgba(255, 204, 102, 0.7);
+}
+
+#battery.critical {
+    background-color: rgba(255, 102, 102, 0.7);
+}
+
+#bluetooth {
+    color: #ffffff;
+    font-weight: 900;
+}
+
+#custom-fastfetch,
+#custom-btop,
+#pulseaudio,
+#network {
+    color: #ffffff;
+}
+
+#custom-btop,
+#network {
+    font-size: 13px;
+}
+
+/* Tooltips */
+tooltip {
+    background-color: @background;
+    color: @foreground;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 12px;
+}

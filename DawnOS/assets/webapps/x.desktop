@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=X
+Exec=google-chrome-stable --app=https://x.com
+Icon=x
+Type=Application

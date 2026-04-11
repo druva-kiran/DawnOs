@@ -1,0 +1,148 @@
+
+configuration {
+    modi:                       "drun";
+    show-icons:                 true;
+    icon-theme:                 "Papirus-Dark";
+    display-drun:               "  Apps";
+    drun-display-format:        "{name}";
+    sort:                       true;
+    sorting-method:             "normal";
+    disable-history:            true;
+    drun-show-actions:          false;
+    columns:                    1;
+    lines:                      10;
+    cycle:                      true;
+    kb-cancel:                  "Escape,Super+d";
+    kb-accept-entry:            "Return,KP_Enter";
+    kb-row-up:                  "Up";
+    kb-row-down:                "Down";
+}
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    font:                        "Google Sans Flex", "JetBrainsMono Nerd Font 13";
+    background-colour:           @background;
+    foreground-colour:           @foreground;
+    border-colour:               @selected-normal-background;
+    alternate-background:        @background;
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       500px;
+    border:                      1px solid;
+    border-radius:               12px;
+    border-color:                @border-colour;
+    background-color:            @background-colour;
+}
+
+mainbox {
+    spacing:                     8px;
+    padding:                     20px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing:                     8px;
+    margin:                      0px 0px 8px 0px;
+    padding:                     10px 14px;
+    border:                      1px solid;
+    border-radius:               8px;
+    border-color:                @border-colour;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    expand:                      false;
+    str:                         " ";
+    background-color:            transparent;
+    text-color:                  @border-colour;
+    font:                        "JetBrainsMono Nerd Font 14";
+}
+
+entry {
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      text;
+    placeholder:                 "Search apps...";
+    placeholder-color:           @foreground-colour;
+}
+
+listview {
+    columns:                     1;
+    lines:                       10;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    fixed-height:                false;
+    spacing:                     2px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+
+element {
+    spacing:                     10px;
+    padding:                     8px 10px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            @normal-background;
+    text-color:                  @normal-foreground;
+}
+element selected.normal {
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
+}
+element alternate.normal {
+    background-color:            @alternate-normal-background;
+    text-color:                  @alternate-normal-foreground;
+}
+element normal.urgent {
+    background-color:            @urgent-background;
+    text-color:                  @urgent-foreground;
+}
+element normal.active {
+    background-color:            @active-background;
+    text-color:                  @active-foreground;
+}
+
+element-icon {
+    background-color:            transparent;
+    size:                        22px;
+    vertical-align:              0.5;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+message {
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+textbox {
+    padding:                     8px 10px;
+    border-radius:               8px;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
+}
+error-message {
+    padding:                     10px;
+    border:                      1px solid;
+    border-radius:               10px;
+    border-color:                @border-colour;
+    background-color:            @background-colour;
+    text-color:                  @foreground-colour;
+}

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=LinkedIn
+Exec=google-chrome-stable --app=https://www.linkedin.com
+Icon=linkedin
+Type=Application
+Categories=Network;
+StartupWMClass=linkedin

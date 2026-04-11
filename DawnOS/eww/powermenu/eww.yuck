@@ -1,0 +1,21 @@
+(defwindow powermenu
+    :monitor 0
+    :stacking "fg"
+    :windowtype "normal"
+    :wm-ignore true
+    :geometry (geometry :width "100%" :height "100%" :anchor "center")
+    (powermenu_layout))
+
+(defwidget powermenu_layout []
+    (overlay :hexpand true :vexpand true
+        (eventbox :onclick "eww -c ~/.config/eww/powermenu close powermenu && hyprctl dispatch submap reset"
+                  (box :class "click-outside" :expand true))
+        (box :valign "center" :halign "start" :class "powermenu-box" :space-evenly false :orientation "v" :spacing 10
+            (box :class "powermenu-buttons" :orientation "v" :space-evenly true :spacing 10
+                (button :class "btn lock" :onclick "eww -c ~/.config/eww/powermenu close powermenu && hyprctl dispatch submap reset && hyprlock &" :tooltip "Lock ()" "")
+                (button :class "btn restart" :onclick "eww -c ~/.config/eww/powermenu close powermenu && hyprctl dispatch submap reset && systemctl reboot" :tooltip "Restart ()" "")
+                (button :class "btn poweroff" :onclick "eww -c ~/.config/eww/powermenu close powermenu && hyprctl dispatch submap reset && systemctl poweroff" :tooltip "Power Off ()" "")
+            )
+        )
+    )
+)

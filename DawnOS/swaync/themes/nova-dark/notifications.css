@@ -1,0 +1,129 @@
+/* =====================================================
+   notifications.css — Floating Notifications
+   Part of: nova-dark swaync theme
+   Colors: driven by pywal (@color0–@color15)
+   ===================================================== */
+
+/* ── Color aliases from pywal ────────────────────── */
+@define-color notif-bg       alpha(@background, 0.90);
+@define-color notif-border   alpha(@color4, 0.28);
+@define-color notif-accent   @color4;
+@define-color notif-hover    alpha(@color4, 0.2);
+@define-color notif-action   alpha(@color0, 0.6);
+@define-color notif-text     @foreground;
+@define-color notif-text-dim alpha(@foreground, 0.6);
+@define-color notif-urgent   @color1;
+@define-color notif-shadow   rgba(0, 0, 0, 0.65);
+
+/* ── Global reset ────────────────────────────────── */
+* {
+  all: unset;
+  color: @notif-text;
+  font-size: 13px;
+  font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font", "Rubik", sans-serif;
+  transition: all 160ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Floating notification wrapper ──────────────── */
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.floating-notifications.background .notification-row .notification-background {
+  background: @notif-bg;
+  border: 1px solid @notif-border;
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.1),
+    0 8px 28px @notif-shadow;
+  margin: 10px 14px;
+  padding: 0;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification {
+  padding: 4px;
+  border-radius: 18px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+  border: 1px solid alpha(@notif-urgent, 0.7);
+  border-radius: 18px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content {
+  margin: 10px 12px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
+  min-height: 3em;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
+  background: @notif-action;
+  border-radius: 10px;
+  margin: 4px;
+  padding: 4px 12px;
+  border: 1px solid transparent;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+  background: @notif-hover;
+  border-color: alpha(@notif-accent, 0.35);
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+  background: @notif-accent;
+  color: @background;
+}
+
+.floating-notifications.background .notification-row .notification-background .close-button {
+  margin: 6px;
+  padding: 3px;
+  border-radius: 8px;
+  background: transparent;
+  color: @notif-text-dim;
+}
+
+.floating-notifications.background .notification-row .notification-background .close-button:hover {
+  background: alpha(@notif-urgent, 0.3);
+  color: @notif-text;
+}
+
+/* ── Text ────────────────────────────────────────── */
+.image {
+  margin: 8px 14px 8px 4px;
+  border-radius: 8px;
+}
+
+.summary {
+  font-weight: 700;
+  font-size: 0.93rem;
+}
+
+.body {
+  font-size: 0.8rem;
+  color: @notif-text-dim;
+  margin-top: 2px;
+}
+
+.app-name {
+  font-size: 0.72rem;
+  color: @notif-text-dim;
+  letter-spacing: 1px;
+}
+
+.time {
+  font-size: 0.72rem;
+  color: @notif-text-dim;
+}
+
+/* ── Progress ────────────────────────────────────── */
+.notification.critical progress,
+.notification.low progress,
+.notification.normal progress {
+  background: @notif-accent;
+  border-radius: 99px;
+  min-height: 3px;
+}

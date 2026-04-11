@@ -1,0 +1,106 @@
+@import "/home/%USERNAME%/.cache/wal/colors.scss";
+
+$bg-color: rgba($color0, 0.85);
+$fg-color: $color7;
+$main-radius: 16px;
+$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+  all: unset;
+}
+
+window {
+  background-color: transparent;
+}
+
+.main-container {
+  background-color: transparent;
+  padding: 8px;
+}
+
+.widget-card {
+  background-color: $bg-color;
+  border-radius: $main-radius;
+  padding: 12px 14px;
+}
+
+/* --- QUICK SETTINGS --- */
+.control-row {
+  margin-bottom: 2px;
+}
+.control-icon-box {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 18px;
+  background-color: rgba($color7, 0.08);
+}
+.control-icon {
+  font-size: 16px;
+  color: $color7;
+}
+scale { padding: 0; margin: 0; }
+scale slider { min-width: 0; min-height: 0; background-color: transparent; box-shadow: none; }
+scale trough {
+  background-color: rgba($color7, 0.12);
+  border-radius: 10px;
+  min-height: 14px;
+}
+scale highlight {
+  background-color: $color4;
+  border-radius: 10px;
+  min-height: 14px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.control-row:nth-child(2) scale highlight {
+  background-color: $color3;
+}
+/* Toggles Grid */
+.toggles-box { margin-top: 5px; }
+.toggle-btn {
+  background-color: rgba($color7, 0.08);
+  color: $color7;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 12px;
+  min-width: 44px;
+  min-height: 44px;
+  transition: $transition;
+}
+.toggle-btn:hover {
+  background-color: rgba($color7, 0.2);
+  color: $color2;
+}
+
+/* --- SYSTEM METRICS --- */
+.system-metrics { padding: 12px 14px; }
+.metric-label { font-size: 10px; font-weight: 700; color: $color7; margin-bottom: 4px; }
+.metric-val { font-size: 10px; font-weight: 600; color: rgba($color7, 0.85); margin-bottom: 6px; }
+.metric-prog-box { min-height: 70px; }
+progressbar.metric-prog > trough { background-color: rgba($color7, 0.12); border-radius: 10px; min-width: 16px; min-height: 70px; }
+progressbar.metric-prog > trough > progress { border-radius: 10px; min-width: 16px; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+progressbar.cpu > trough > progress { background-color: $color4; }
+progressbar.tmp > trough > progress { background-color: $color3; }
+progressbar.mem > trough > progress { background-color: $color5; }
+progressbar.dsk > trough > progress { background-color: $color6; }
+progressbar.bat > trough > progress { background-color: $color2; }
+
+/* --- MEDIA PLAYER --- */
+.media-player { padding: 12px 14px; }
+.album-art { min-width: 64px; min-height: 64px; border-radius: 12px; background-size: cover; background-position: center; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); }
+.media-info { margin-left: 8px; }
+.media-title { font-size: 13px; font-weight: 700; color: $color7; }
+.media-artist { font-size: 11px; font-weight: 500; color: rgba($color7, 0.7); }
+.media-controls { margin-top: 6px; }
+.media-btn { font-size: 16px; color: $color7; padding: 6px; border-radius: 100%; min-width: 32px; min-height: 32px; transition: $transition; background-color: transparent; }
+.media-btn:hover { background-color: rgba($color7, 0.1); color: $color4; }
+.media-btn.play-btn { font-size: 18px; background-color: rgba($color4, 0.15); color: $color4; }
+
+/* --- CALENDAR --- */
+.calendar-box { padding: 12px 14px; }
+calendar { color: $color7; font-size: 12px; font-weight: 500; }
+calendar .header { color: $color7; font-weight: 700; font-size: 14px; padding-bottom: 8px; }
+calendar .button { color: rgba($color7, 0.6); padding: 4px; border-radius: 8px; background-color: transparent; }
+calendar .button:hover { background-color: rgba($color7, 0.12); color: $color7; }
+calendar:selected { color: $color0; background-color: $color4; border-radius: 8px; font-weight: 700; }
+calendar.highlight { color: $color3; font-weight: 800; }

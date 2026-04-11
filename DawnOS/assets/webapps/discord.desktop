@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Discord
+Exec=google-chrome-stable --app=https://discord.com/app
+Icon=discord
+Type=Application

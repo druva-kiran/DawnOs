@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=YouTube
+Exec=google-chrome-stable --app=https://www.youtube.com
+Icon=youtube
+Terminal=false
+Type=Application
+Categories=AudioVideo;Network;
+StartupWMClass=crx

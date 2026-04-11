@@ -1,0 +1,54 @@
+@import "/home/%USERNAME%/.cache/wal/colors.sss";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Papirus", sans-serif;
+}
+
+window {
+    background-color: transparent;
+}
+
+.click-outside {
+    background-color: transparent;
+}
+
+.powermenu-box {
+    background-color: rgba($color0, 0.85);
+    border-top: 2px solid rgba($color1, 0.5);
+    border-bottom: 2px solid rgba($color1, 0.5);
+    border-right: 2px solid rgba($color1, 0.5);
+    border-radius: 0 12px 12px 0;
+    padding: 15px 8px;
+    margin-left: 0px;
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+    background-color: transparent;
+    background-image: none;
+    /* Kills the default GTK gradient/image */
+    border: none;
+    /* Kills the default GTK border */
+    box-shadow: none;
+    /* Kills the default GTK shadow */
+    color: $foreground;
+    font-size: 20px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.lock:hover {
+    color: $color2;
+    background-color: rgba($color2, 0.1);
+}
+
+.restart:hover {
+    color: $color3;
+    background-color: rgba($color3, 0.1);
+}
+
+.poweroff:hover {
+    color: $color1;
+    background-color: rgba($color1, 0.1);
+}
